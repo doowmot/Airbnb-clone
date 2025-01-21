@@ -1,12 +1,12 @@
 class Space:
     # We initialise with all of our attributes
     # Each column in the table should have an attribute here
-    def __init__(self, id, listing_id, name, description, price):
-        self.id = id
+    def __init__(self, space_id, space_name, space_description, space_price_per_night, listing_id):
+        self.space_id = space_id
+        self.space_name = space_name
+        self.space_description = space_description
+        self.space_price_per_night = space_price_per_night
         self.listing_id = listing_id
-        self.name = name
-        self.description = description
-        self.price = price
 
 
     def __eq__(self, other):
@@ -14,6 +14,12 @@ class Space:
     
     
     def __repr__(self):
-        return f"Space({self.id}, {self.listing_id}, '{self.name}', {self.description}, {self.price})"
-
-
+        return (
+            f"Space("
+            f"{self.space_id}, "
+            f"'{self.space_name}', "
+            f"'{self.space_description}', "
+            f"{self.space_price_per_night}, "
+            f"{self.listing_id}"
+            ")"
+    )
