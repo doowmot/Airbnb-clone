@@ -3,3 +3,4 @@ __pycache__
 .pytest_cache
 screenshot.png
 makersbnb-python-seed/
+makersbnb_venv/
