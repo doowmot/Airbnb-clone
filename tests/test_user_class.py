@@ -1,6 +1,6 @@
 from unittest.mock import MagicMock
 import pytest
-from lib.user import User
+from lib.user_class import User
 
 @pytest.fixture
 def mock_db():
