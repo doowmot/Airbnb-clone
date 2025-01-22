@@ -30,15 +30,9 @@ def test_register_account_with_invalid_password(user, mock_db, mock_password_val
     mock_db.add_user.assert_not_called()
 
 def test_sign_in_success(user, mock_db):
-    mock_db.user_exists.return_value = True
     mock_db.validate_user.return_value = True
-    assert user.sign_in("testuser", "password123") == "Sign-in successful!"
+    assert user.sign_in("testuser", "password123") is True
 
-def test_sign_in_failure_username_not_exist(user, mock_db):
-    mock_db.user_exists.return_value = False
-    assert user.sign_in("testuser", "password123") == "Username does not exist. Please register."
-
-def test_sign_in_failure_incorrect_password(user, mock_db):
-    mock_db.user_exists.return_value = True
+def test_sign_in_failure(user, mock_db):
     mock_db.validate_user.return_value = False
-    assert user.sign_in("testuser", "wrongpassword") == "Password is incorrect. Access denied."
+    assert user.sign_in("testuser", "wrongpassword") is False
