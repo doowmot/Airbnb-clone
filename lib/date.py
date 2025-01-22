@@ -8,8 +8,8 @@ class Date:
             self.date = date.strftime('%Y-%m-%d')  # Convert to string
         else:
             self.date = date
-        self.available = available
-        self.space_id = space_id
+            self.available = available
+            self.space_id = space_id
 
     def __eq__(self, other):
         print(f"Comparing {self} with {other}")  # Log the comparison

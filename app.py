@@ -1,6 +1,8 @@
 import os
 from flask import Flask, request, render_template
 from lib.database_connection import get_flask_database_connection
+from lib.space_repository import SpaceRepository
+from lib.space import Space
 
 # Create a new Flask app
 app = Flask(__name__)
@@ -14,6 +16,49 @@ app = Flask(__name__)
 @app.route('/index', methods=['GET'])
 def get_index():
     return render_template('index.html')
+
+# GET /spaces/index
+@app.route('/spaces', methods=['GET'])
+def get_list_spaces():
+    connection = get_flask_database_connection(app)
+    repository = SpaceRepository(connection)
+    spaces = repository.all()
+    return render_template('spaces/index.html', spaces=spaces)
+
+
+# GET /spaces/new
+@app.route('/spaces/new', methods=['GET'])
+def get_a_new_space():
+    return render_template('spaces/new.html')
+
+
+# GET /spaces/<id>  --- geet a single space
+@app.route('/spaces/<int:id>', methods=['GET'])
+def get_a_single_space(id):
+    connection = get_flask_database_connection(app)
+    repository = SpaceRepository(connection)
+    space = repository.find(id)
+    return render_template('spaces/show_single.html', space=space)
+
+
+# POST /spaces/new  --- submit a new space
+@app.route('/spaces', methods=['POST'])
+def post_submit_a_new_space():
+    connection = get_flask_database_connection(app)
+    repository = SpaceRepository(connection)
+
+    space = Space(
+        None,
+        request.form['name'],
+        request.form['description'],
+        #request.form['listing_id'],
+        int(request.form['price']),
+        1
+    )
+    repository.create(space)
+    spaces = repository.all()
+    return render_template('spaces/index.html', spaces=spaces)
+
 
 # These lines start the server if you run this file directly
 # They also start the server configured to use the test database

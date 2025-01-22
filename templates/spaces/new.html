@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List a New Space - MakersBnB</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>List a New Space</h1>
+
+    <form action="/spaces" method="POST">
+
+        <div>
+            <input 
+            type="text" 
+            name="name" 
+            placeholder="Name your space" required>
+        </div>
+
+        <div>
+            <input 
+            type="text" 
+            name="description" 
+            placeholder="Add description" required> 
+        </div>
+
+        <div>
+            <input 
+            type="number" 
+            name="price" 
+            placeholder="Price per night" required>
+        </div>
+
+        <div>
+            <input 
+            type="submit" 
+            value="List Space">
+        </div>
+
+    </form>
+</body>
+</html>

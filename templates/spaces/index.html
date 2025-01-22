@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spaces - MakersBnB</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Available Spaces</h1>
+
+    {% if spaces %}
+        <div class="spaces-list">
+            {% for space in spaces %}
+            <div class="space-item">
+                <h2>{{ space.space_name }}</h2>
+                <p>{{ space.space_description }}</p>
+                <p>Price per night: £{{ space.space_price_per_night }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No spaces available at the moment.</p>
+    {% endif %}
+
+    <a href="/spaces/new">List a New Space</a>
+</body>
+</html>
