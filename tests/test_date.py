@@ -1,4 +1,4 @@
-from lib.date import *
+from models.date import *
 
 """
 User constructs with an user_id, user_email and user_password
@@ -7,7 +7,7 @@ def test_date_constructs():
     date = Date(1,"2025-01-01",True, 1)
     assert date.date_id == 1
     assert date.date == "2025-01-01"
-    assert date.avaliable == True
+    assert date.available == True
     assert date.space_id == 1
 
 """
