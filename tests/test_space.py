@@ -1,4 +1,4 @@
-from models.space import Space
+from lib.space import Space
 import pytest
 
 def test_space_constructs():

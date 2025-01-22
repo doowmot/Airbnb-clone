@@ -1,7 +1,7 @@
-from models.booking import *
-from repositories.booking_repository import *
-from repositories.date_repository import *
-from repositories.user_repository import *
+from lib.booking import *
+from lib.booking_repository import *
+from lib.date_repository import *
+from lib.user_repository import *
 
 
 def test_get_all_records(db_connection): # See conftest.py to learn what `db_connection` is.

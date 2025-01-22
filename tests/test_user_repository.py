@@ -1,5 +1,5 @@
-from models.user import *
-from repositories.user_repository import *
+from lib.user import *
+from lib.user_repository import *
 """
 When we call UserRepository#all
 We get a list of User objects reflecting the seed data.

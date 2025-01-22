@@ -1,4 +1,4 @@
-from models.user import *
+from lib.user import *
 
 
 def test_user_constructs():

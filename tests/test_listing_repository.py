@@ -1,6 +1,6 @@
-from models.listing import *
-from repositories.listing_repository import *
-from repositories.user_repository import *
+from lib.listing import *
+from lib.listing_repository import *
+from lib.user_repository import *
 
 
 def test_listing_get_all_records(db_connection):

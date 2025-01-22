@@ -1,4 +1,4 @@
-from models.listing import *
+from lib.listing import *
 
 def test_listing_constructs():
     listing = Listing(1,1)

@@ -1,4 +1,4 @@
-from models.date import *
+from lib.date import *
 
 """
 User constructs with an user_id, user_email and user_password
