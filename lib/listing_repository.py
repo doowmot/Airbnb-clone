@@ -1,4 +1,4 @@
-from models.listing import Listing
+from lib.listing import Listing
 
 class ListingRepository:
     def __init__(self, connection):

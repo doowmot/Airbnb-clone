@@ -1,4 +1,4 @@
-from models.user import *
+from lib.user import *
 
 class UserRepository:
     def __init__(self, connection):

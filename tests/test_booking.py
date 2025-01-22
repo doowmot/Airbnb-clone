@@ -1,4 +1,4 @@
-from models.booking import *
+from lib.booking import *
 
 def test_booking_constructs():
     booking = Booking(1,True, 1, 1, 1)

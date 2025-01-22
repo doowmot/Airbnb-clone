@@ -1,5 +1,5 @@
-from models.date import *
-from repositories.date_repository import *
+from lib.date import *
+from lib.date_repository import *
 """
 When we call dateRepository#all
 We get a list of User objects reflecting the seed data.

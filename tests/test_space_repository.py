@@ -1,6 +1,6 @@
-from repositories.space_repository import SpaceRepository
-from models.space import Space
-from repositories.listing_repository import *
+from lib.space_repository import SpaceRepository
+from lib.space import Space
+from lib.listing_repository import *
 
 def test_get_all_spaces(db_connection):  
     db_connection.seed("seeds/makersbnb.sql")  

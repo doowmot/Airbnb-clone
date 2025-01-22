@@ -1,4 +1,4 @@
-from models.space import Space
+from lib.space import Space
 
 class SpaceRepository:
 
