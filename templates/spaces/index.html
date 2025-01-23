@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spaces - MakersBnB</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="makersbnb-content">
+        <h1>Available Spaces</h1>
+
+    {% if spaces %}
+        <div class="spaces-list">
+            {% for space in spaces %}
+            <div class="space-item">
+                <h2>{{ space.space_name }}</h2>
+                <p>{{ space.space_description }}</p>
+                <p class="price">Price per night: £{{ space.space_price_per_night }}</p>
+                <div class="space-actions">
+                    <a href="{{ url_for('get_a_single_space', id=space.space_id) }}" class="btn-secondary">View</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No spaces available at the moment.</p>
+    {% endif %}
+
+        <div class="button-group">
+            <a href="{{ url_for('get_a_new_space') }}" class="btn-primary">List a New Space</a>
+            <a href="{{ url_for('get_index') }}" class="btn-primary">Home Page</a>
+        </div>
+    </div>
+</body>
+</html>

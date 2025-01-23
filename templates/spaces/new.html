@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List a New Space - MakersBnB</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="makersbnb-content">
+        <h1>List a New Space</h1>
+
+        <form action="/spaces" method="POST">
+
+            <div>
+                <input 
+                type="text" 
+                name="name" 
+                placeholder="Name your space" required>
+            </div>
+
+            <div>
+                <input 
+                type="text" 
+                name="description" 
+                placeholder="Add description" required> 
+            </div>
+
+            <div>
+                <input 
+                type="number" 
+                name="price" 
+                placeholder="Price per night" required>
+            </div>
+
+            <div>
+                <input 
+                type="submit" 
+                value="List Space">
+            </div>
+
+        </form>
+        <div class="button-group">
+            <a href="{{ url_for('get_list_spaces') }}" class="btn-primary">View All Spaces</a>
+            <a href="{{ url_for('get_index') }}" class="btn-primary">Home Page</a>
+        </div>
+    </div>
+</body>
+</html>
