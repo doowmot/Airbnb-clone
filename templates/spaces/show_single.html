@@ -11,6 +11,9 @@
             <h2> {{ space.space_name }} </h2>
             <p data-testid="description">{{ space.space_description }}</p>
             <p data-testid="price">Price per night: £{{ space.space_price_per_night }}</p>
+            <div class="space-booking">
+                <a href="#" class="btn-primary">Book Now</a>
+            </div>
         </div>
         <div class="button-group">
             <a href="{{ url_for('get_list_spaces') }}" class="btn-primary">Return to All Spaces</a>

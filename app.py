@@ -59,6 +59,16 @@ def post_submit_a_new_space():
     spaces = repository.all()
     return render_template('spaces/index.html', spaces=spaces)
 
+# GET /login
+@app.route('/login', methods=['GET'])
+def get_login():
+    return render_template('authentication/login.html')
+
+# GET /signup
+@app.route('/signup', methods=['GET'])
+def get_signup():
+    return render_template('authentication/signup.html')
+
 
 # These lines start the server if you run this file directly
 # They also start the server configured to use the test database
