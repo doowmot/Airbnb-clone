@@ -5,7 +5,8 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1>Available Spaces</h1>
+    <div class="makersbnb-content">
+        <h1>Available Spaces</h1>
 
     {% if spaces %}
         <div class="spaces-list">
@@ -13,7 +14,7 @@
             <div class="space-item">
                 <h2>{{ space.space_name }}</h2>
                 <p>{{ space.space_description }}</p>
-                <p>Price per night: £{{ space.space_price_per_night }}</p>
+                <p class="price">Price per night: £{{ space.space_price_per_night }}</p>
             </div>
             {% endfor %}
         </div>
@@ -21,6 +22,10 @@
         <p>No spaces available at the moment.</p>
     {% endif %}
 
-    <a href="/spaces/new">List a New Space</a>
+        <div class="button-group">
+            <a href="{{ url_for('get_a_new_space') }}" class="btn-primary">List a New Space</a>
+            <a href="{{ url_for('get_index') }}" class="btn-primary">Home Page</a>
+        </div>
+    </div>
 </body>
 </html>

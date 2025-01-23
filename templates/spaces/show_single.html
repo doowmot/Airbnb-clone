@@ -5,12 +5,16 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1> {{ space.space_name }} - Space Details</h1>
-    <div class="space-details">
-        <h2> {{ space.space_name }} </h2>
-        <p data-testid="description">{{ space.space_description }}</p>
-        <p data-testid="price">Price per night: £{{ space.space_price_per_night }}</p>
+    <div class="makersbnb-content">
+        <h1> {{ space.space_name }} - Space Details</h1>
+        <div class="space-details">
+            <h2> {{ space.space_name }} </h2>
+            <p data-testid="description">{{ space.space_description }}</p>
+            <p data-testid="price">Price per night: £{{ space.space_price_per_night }}</p>
+        </div>
+        <div class="button-group">
+            <a href="{{ url_for('get_list_spaces') }}" class="btn-primary">Return to All Spaces</a>
+        </div>
     </div>
-    <a href="{{ url_for('get_list_spaces') }}">Return to All Spaces</a>
 </body>
 </html>
