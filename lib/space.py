@@ -8,7 +8,7 @@ class Space:
             raise ValueError("Name must be text")
         if space_price_per_night <= 0:
             raise ValueError("Price must be above 0")
-        
+
         self.space_id = space_id
         self.space_name = space_name
         self.space_description = space_description
@@ -17,7 +17,7 @@ class Space:
 
     def __eq__(self, other):
         return self.__dict__ == other.__dict__
-    
+
     def __repr__(self):
         return (
             f"Space("
