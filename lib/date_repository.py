@@ -1,4 +1,5 @@
 from lib.date import *
+from datetime import timedelta
 
 class DateRepository:
     def __init__(self, connection):
@@ -20,6 +21,15 @@ class DateRepository:
         row = rows[0]
         return Date(row["date_id"], row["date"], row["available"], row["space_id"])
 
+    def create_availability_range(self, available_from, available_to, space_id):
+            start_date = datetime.strptime(available_from, '%Y-%m-%d')
+            end_date = datetime.strptime(available_to, '%Y-%m-%d')
+            
+            current_date = start_date
+            while current_date <= end_date:
+                date_string = current_date.strftime('%Y-%m-%d')
+                self.create(Date(None, date_string, True, space_id))
+                current_date += timedelta(days=1)
 
     def create(self, date):
         self._connection.execute('INSERT INTO dates (date, available, space_id) VALUES (%s,%s,%s)', [date.date, date.available, date.space_id])

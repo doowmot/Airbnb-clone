@@ -45,18 +45,25 @@ def get_a_single_space(id):
 @app.route('/spaces', methods=['POST'])
 def post_submit_a_new_space():
     connection = get_flask_database_connection(app)
-    repository = SpaceRepository(connection)
+    space_repository = SpaceRepository(connection)
+    date_repository = DateRepository(connection)
+
 
     space = Space(
         None,
         request.form['name'],
         request.form['description'],
-        #request.form['listing_id'],
         int(request.form['price']),
         1
     )
-    repository.create(space)
-    spaces = repository.all()
+    space_repository.create(space)
+
+    available_from = request.form['available_from']
+    available_to = request.form['available_to']
+    
+    date_repository.create_availability_range(available_from, available_to, space_id)
+
+    spaces = space_repository.all()
     return render_template('spaces/index.html', spaces=spaces)
 
 # GET /login
