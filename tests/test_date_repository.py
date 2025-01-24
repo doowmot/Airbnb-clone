@@ -51,7 +51,6 @@ def test_create_date(db_connection):
         Date(2, '2025-02-01', False, 1)
     ])
 
-
 def test_delete_date(db_connection):
     db_connection.seed("seeds/makersbnb.sql")
     repository = DateRepository(db_connection)
@@ -87,3 +86,35 @@ def test_update_space_id(db_connection):
     assert repr(result) == repr([
         Date(1, '2025-01-01', True, 1)
     ])
+
+def test_create_available_and_unavailable_dates(db_connection):
+    db_connection.seed("seeds/makersbnb.sql")
+    repository = DateRepository(db_connection)
+    
+    repository.create(Date(1, "2025-01-01", True, 1))   # Available
+    repository.create(Date(1, "2025-01-02", False, 1))  # Unavailable
+    
+    dates = repository.all()
+
+    assert len(dates) == 3  # One date in the seed file + two addeed here
+
+    assert dates[1].available == True
+    assert dates[2].available == False
+
+def test_create_availability_range(db_connection):
+    db_connection.seed("seeds/makersbnb.sql")
+    repository = DateRepository(db_connection)
+
+    initial_dates = repository.all()
+    initial_count = len(initial_dates)
+
+    repository.create_availability_range(
+        available_from="2025-01-01",
+        available_to="2025-01-03",
+        space_id=1
+    )
+
+    dates = repository.all()
+
+    assert len(dates) == initial_count + 3
+    assert str(dates[1].date) == "2025-01-01"
