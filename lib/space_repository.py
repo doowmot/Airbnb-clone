@@ -34,7 +34,6 @@ class SpaceRepository:
             return "Access denied. You must be signed in to view listings."
         self._connection.execute('DELETE FROM spaces WHERE space_id = %s', [space_id])
         return None
-    
 
     def update_space(self, space_id, column, new_value):
         match column:
@@ -60,3 +59,19 @@ class SpaceRepository:
                 )
             case _:
                 raise ValueError(f"Unknown column: {column}")
+    
+    def create_with_dates(self, space, available_from, available_to):
+        """Create a space and its availability dates"""
+        if not self.user.is_authenticated:
+            return "Access denied. You must be signed in to create listings."
+        
+        self._connection.execute(
+            'INSERT INTO spaces (space_name, space_description, space_price_per_night, listing_id) VALUES (%s, %s, %s, %s) RETURNING space_id', 
+            [space.space_name, space.space_description, space.space_price_per_night, space.listing_id]
+        )
+        
+        space_id = self._connection.execute('SELECT lastval()')[0]['lastval']
+        
+        self._date_repository.create_availability_range(available_from, available_to, space_id)
+        
+        return space_id
